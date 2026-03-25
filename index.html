@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,7 +10,7 @@
 *{box-sizing:border-box} body{margin:0;font-family:Arial,sans-serif;background:var(--bg);color:#1d2433}
 .top{background:#fff6d8;padding:10px;text-align:center;font-size:13px;font-weight:700;border-bottom:1px solid #eadfa7}
 .wrap{max-width:1100px;margin:auto;padding:0 16px}
-header{position:sticky;top:0;background:rgba(255,255,255,.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header{position:sticky;top:0;background:rgba(255,255,255,.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);z-index:5}
 .nav{display:flex;justify-content:space-between;align-items:center;padding:16px 0;gap:12px}
 .brand{display:flex;align-items:center;gap:12px}
 .logo{width:52px;height:52px;border-radius:16px;background:linear-gradient(180deg,var(--navy),var(--navy2));position:relative}
@@ -52,6 +53,7 @@ input,select{padding:14px;border:1px solid #ccd7e6;border-radius:16px;font-size:
 .qr{border:1px solid var(--line);border-radius:18px;padding:16px;text-align:center}.qrbox{width:148px;height:148px;margin:auto;background:repeating-linear-gradient(0deg,#111 0 8px,#fff 8px 16px),repeating-linear-gradient(90deg,#111 0 8px,#fff 8px 16px);background-blend-mode:multiply;border:10px solid #fff}
 .verify{display:grid;grid-template-columns:1fr auto;gap:12px;margin:18px 0}.result{padding:22px;border-color:#cde8d8;background:linear-gradient(180deg,#f8fcf9,#fff)}
 .foot{text-align:center;color:var(--muted);padding:34px 0 48px}
+.mutedbox{background:#f8fbff;border:1px solid #dde8fa;padding:12px 14px;border-radius:16px;color:#567196;font-size:14px;margin-top:14px}
 @media(max-width:980px){.grid,.two,.certGrid{grid-template-columns:1fr}.stats,.steps,.form{grid-template-columns:1fr 1fr}}
 @media(max-width:700px){.grid,.stats,.steps,.form,.verify{grid-template-columns:1fr}.hero h2{font-size:36px}.actions{flex-direction:column}.btn{width:100%}}
 </style>
@@ -73,7 +75,7 @@ input,select{padding:14px;border:1px solid #ccd7e6;border-radius:16px;font-size:
       <div class="stats">
         <div class="card"><strong>5–10 minutes</strong><span>Short scenario-based learning designed to fit into the licensing process.</span></div>
         <div class="card"><strong>Verifiable — DMV</strong><span>Completion can be shown to DMV staff or checked through a verification workflow.</span></div>
-        <div class="card"><strong>Low infrastructure burden</strong><span>Centralized delivery reduces DMV hosting, bandwidth, and maintenance needs.</span></div>
+        <div class="card"><strong>No DMV data access</strong><span>License or permit numbers are self-reported only. No DMV database integration or validation is required.</span></div>
       </div>
     </div>
     <div class="panel">
@@ -89,7 +91,7 @@ input,select{padding:14px;border:1px solid #ccd7e6;border-radius:16px;font-size:
   <section>
     <div class="steps">
       <div class="step"><div class="num">1</div><strong>Home</strong><div class="sub">Open the platform and start the demo.</div></div>
-      <div class="step"><div class="num">2</div><strong>Identify Driver</strong><div class="sub">Enter permit or license information.</div></div>
+      <div class="step"><div class="num">2</div><strong>Participant Info</strong><div class="sub">Enter self-reported contact and license or permit info.</div></div>
       <div class="step"><div class="num">3</div><strong>Course</strong><div class="sub">Watch a short scenario-based module.</div></div>
       <div class="step"><div class="num">4</div><strong>Certificate</strong><div class="sub">Issue confirmation of completion.</div></div>
       <div class="step"><div class="num">5</div><strong>Verify</strong><div class="sub">Confirm completion instantly.</div></div>
@@ -100,32 +102,37 @@ input,select{padding:14px;border:1px solid #ccd7e6;border-radius:16px;font-size:
         <h3>Welcome to SAFE STOP USA</h3><p>This is the public-facing entry point. A driver starts here, learns what the program is, and launches the guided course experience.</p>
         <div class="two">
           <div class="fieldbox"><h3 style="font-size:24px">Short, scenario-based education</h3><p>Help drivers understand lawful expectations during traffic stops, avoid unnecessary escalation, and complete a fast mobile- and laptop-friendly course.</p></div>
-          <div class="fieldbox"><h3 style="font-size:24px">Demo starting point</h3><p>Use the button below to begin the sample driver flow.</p><div class="actions"><button class="btn primary" data-screen="identify">Start Demo</button></div></div>
+          <div class="fieldbox"><h3 style="font-size:24px">Demo starting point</h3><p>Use the button below to begin the sample participant flow.</p><div class="actions"><button class="btn primary" data-screen="identify">Start Demo</button></div></div>
         </div>
       </section>
       <section class="screen" id="screen-identify">
-        <h3>Connect the course to the driver</h3><p>In a live version, this screen would authenticate the applicant and match the course to the permit or license record. For the demo, sample data is prefilled.</p>
+        <h3>Begin the course</h3><p>Participants self-report their information to associate the course with the right person. No DMV data access or validation is required.</p>
         <div class="fieldbox"><div class="form">
-          <label>Driver license / permit number<input value="D1234567"></label>
-          <label>Date of birth<input value="01/15/1990"></label>
+          <label>First name<input value="Bob"></label>
+          <label>Last name<input value="Smith"></label>
+          <label>License / permit number (self-reported)<input value="D1234567"></label>
+          <label>Email or mobile number<input value="bob@example.com"></label>
           <label>Applicant type<select><option>Learner’s Permit Applicant</option><option>First-Time Licensee</option><option selected>Renewal Applicant</option></select></label>
           <label>Delivery channel<select><option selected>Online</option><option>DMV office</option><option>State-approved driver education provider</option></select></label>
-        </div><div class="actions"><button class="btn secondary" data-screen="home">Back</button><button class="btn primary" data-screen="course">Continue to Course</button></div></div>
+        </div>
+        <div class="mutedbox">License or permit numbers are self-reported and used only to associate course completion with the participant. No state DMV databases are accessed or integrated.</div>
+        <div class="actions"><button class="btn secondary" data-screen="home">Back</button><button class="btn primary" data-screen="course">Continue to Course</button></div></div>
       </section>
       <section class="screen" id="screen-course">
-        <h3>Scenario 1: Routine Traffic Stop Basics</h3><p>This is where the driver views a short educational module explaining lawful expectations, clear communication, and common escalation triggers.</p>
+        <h3>Scenario 1: Routine Traffic Stop Basics</h3><p>This is where the participant views a short educational module explaining lawful expectations, clear communication, and common escalation triggers.</p>
         <div class="two">
-          <div class="video"><div><div class="videoTag">Video module</div><h3 style="font-size:28px;color:white;margin-top:12px">Know what to expect. Know how to respond.</h3><p style="color:#eef4ff">Narrated by an experienced law enforcement professional using concise, real-world examples.</p></div><div class="play">▶</div><div><div style="display:flex;justify-content:space-between;color:#eef4ff"><span>Course progress</span><span>67% complete</span></div><div class="bar"><div></div></div></div></div>
+          <div class="video"><div><div class="videoTag">Video module</div><h3 style="font-size:28px;color:white;margin-top:12px">Know what to expect. Know how to respond.</h3><p style="color:#eef4ff">Narrated by an experienced law enforcement professional using concise, real-world examples.</p></div><div class="play">▶</div><div><div style="display:flex;justify-content:space-between;color:#eef4ff"><span>Course progress</span><span>67% complete</span></div><div style="margin-top:8px;width:100%;height:12px;background:rgba(255,255,255,.18);border-radius:999px;overflow:hidden"><div style="height:100%;width:67%;background:linear-gradient(90deg,#f0c24b,#ffe27f)"></div></div></div></div>
           <div class="fieldbox"><h3 style="font-size:24px">Quick knowledge check</h3><p>What is the best overall approach during a routine traffic stop?</p><div class="answers"><div class="ans">Argue immediately and leave the vehicle without instruction.</div><div class="ans ok">Stay calm, follow lawful directions, and communicate clearly.</div><div class="ans">Refuse all communication until the stop is over.</div></div><div class="actions"><button class="btn secondary" data-screen="identify">Back</button><button class="btn primary" data-screen="certificate">Complete Demo Course</button></div></div>
         </div>
       </section>
       <section class="screen" id="screen-certificate">
-        <h3>Completion confirmed</h3><p>After successful course completion, the driver receives a certificate ID and QR-linked verification record. This can be shown in person or verified online.</p>
+        <h3>Completion confirmed</h3><p>After successful course completion, the participant receives a certificate ID and QR-linked verification record. This can be shown in person or verified online.</p>
         <div class="cert"><div class="certHead"><div><h3 style="font-size:26px;margin:0">SAFE STOP <span style="color:var(--gold)">USA</span></h3><div class="sub">Driver Interaction Education Program — Certificate of Completion</div></div><div class="valid">Valid completion record</div></div>
           <div class="certGrid">
             <div class="rows">
-              <div class="row"><span>Driver</span><strong>Sample Driver</strong></div>
+              <div class="row"><span>Participant</span><strong>Bob Smith</strong></div>
               <div class="row"><span>Applicant type</span><strong>Renewal Applicant</strong></div>
+              <div class="row"><span>License / permit</span><strong>D123***67</strong></div>
               <div class="row"><span>Certificate ID</span><strong>SSU-2026-48291</strong></div>
               <div class="row"><span>Completion date</span><strong>March 24, 2026</strong></div>
               <div class="row"><span>Status</span><strong>Valid</strong></div>
@@ -136,10 +143,11 @@ input,select{padding:14px;border:1px solid #ccd7e6;border-radius:16px;font-size:
         </div>
       </section>
       <section class="screen" id="screen-verify">
-        <h3>Instant completion check</h3><p>A DMV employee or other authorized verifier enters the certificate ID or scans the QR code to confirm completion. This demo shows the result state directly.</p>
+        <h3>Instant completion check</h3><p>A DMV employee or other authorized verifier enters the certificate ID or scans the QR code to confirm completion. The result can show the participant name and a masked license or permit number without any DMV system integration.</p>
         <div class="fieldbox"><div class="verify"><input value="SSU-2026-48291"><button class="btn primary" id="verifyBtn">Verify</button></div>
           <div class="result" id="verifyResult"><h3 style="font-size:24px;color:var(--ok)">Completion Verified</h3><div class="rows" style="margin-top:10px">
-            <div class="row"><span>Driver</span><strong>Sample Driver</strong></div>
+            <div class="row"><span>Participant</span><strong>Bob Smith</strong></div>
+            <div class="row"><span>License / permit</span><strong>D123***67</strong></div>
             <div class="row"><span>Certificate ID</span><strong>SSU-2026-48291</strong></div>
             <div class="row"><span>Completion date</span><strong>March 24, 2026</strong></div>
             <div class="row"><span>Status</span><strong>Valid</strong></div>
@@ -151,9 +159,10 @@ input,select{padding:14px;border:1px solid #ccd7e6;border-radius:16px;font-size:
   <div class="foot">SAFE STOP USA — single-page interactive demo</div>
 </main>
 <script>
-const order=["home","identify","course","certificate","verify"], labels={home:"Homepage",identify:"Driver Identification",course:"Course Module",certificate:"Completion Certificate",verify:"Verification Portal"};
+const order=["home","identify","course","certificate","verify"], labels={home:"Homepage",identify:"Participant Info",course:"Course Module",certificate:"Completion Certificate",verify:"Verification Portal"};
 function showScreen(n){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));document.getElementById('screen-'+n).classList.add('active');document.getElementById('label').textContent=labels[n];document.getElementById('progress').textContent=`Step ${order.indexOf(n)+1} of ${order.length}`;document.querySelector('.stage').scrollIntoView({behavior:'smooth',block:'start'});}
 document.querySelectorAll('[data-screen]').forEach(b=>b.onclick=()=>showScreen(b.dataset.screen));
 document.getElementById('verifyBtn').onclick=()=>document.getElementById('verifyResult').scrollIntoView({behavior:'smooth',block:'nearest'});
 </script>
-</body></html>
+</body>
+</html>
