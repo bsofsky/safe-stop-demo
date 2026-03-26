@@ -803,7 +803,7 @@ This certificate may be presented digitally or in person at a DMV office, driver
       document.getElementById('label').textContent=labels[n];
       document.getElementById('progress').textContent=`Step ${order.indexOf(n)+1} of ${order.length}`;
       const stage = document.querySelector('.stage');
-const y = stage.getBoundingClientRect().top + window.pageYOffset - 180;
+const y = stage.getBoundingClientRect().top + window.pageYOffset - 200;
 window.scrollTo({ top: y, behavior: 'smooth' });
     }
 
