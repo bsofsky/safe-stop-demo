@@ -811,5 +811,24 @@ This certificate may be presented digitally or in person at a DMV office, driver
       document.getElementById('verifyResult').scrollIntoView({behavior:'smooth',block:'nearest'});
     };
   </script>
+  <script>
+function returnToOverview() {
+  // reset to first demo screen
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  const homeScreen = document.getElementById('screen-home');
+  if (homeScreen) {
+    homeScreen.classList.add('active');
+  }
+
+  // update labels if they exist
+  const label = document.getElementById('label');
+  const progress = document.getElementById('progress');
+  if (label) label.textContent = 'Homepage';
+  if (progress) progress.textContent = 'Step 1 of 5';
+
+  // scroll to top of page
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+</script>
 </body>
 </html>
