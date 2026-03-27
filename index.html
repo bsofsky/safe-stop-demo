@@ -88,36 +88,75 @@
   <div id="screen-home" class="screen active">
     <h2>Program Overview</h2>
     <p>
-      SAFE STOP is a scenario-based, real-world video training program that helps drivers understand lawful behavior during traffic stops.
+      SAFE STOP is a scenario-based, real-world video training program designed to educate drivers on lawful behavior during traffic stops.
+    </p>
+    <p>
+      The program uses actual encounter scenarios narrated by experienced law enforcement professionals to improve compliance, reduce confusion, and prevent unnecessary escalation.
+    </p>
+    <p>
+      It is designed for learner’s permit applicants, new licensees, and license renewals.
     </p>
   </div>
 
   <div id="screen-identify" class="screen">
-    <h2>Step 1: Driver Identification</h2>
-    <p>Driver enters license or permit number (not verified).</p>
-    <button class="btn primary" data-screen="course">Continue</button>
+    <h2>Step 1: Participant Information</h2>
+    <p>
+      The participant enters basic information, including a self-reported license or permit number.
+    </p>
+    <p>
+      This allows the training to be associated with the correct individual without requiring DMV system access or database verification.
+    </p>
+    <button class="btn primary" data-screen="course">Continue to Training</button>
   </div>
 
   <div id="screen-course" class="screen">
-    <h2>Step 2: Video Training</h2>
-    <p>Short, real-world video modules narrated by law enforcement.</p>
+    <h2>Step 2: Video Training Modules</h2>
+    <p>
+      Participants complete short, scenario-based video modules built around real-world traffic stop encounters.
+    </p>
+    <p>
+      Modules are narrated by experienced law enforcement and explain:
+    </p>
+    <ul style="text-align:left; max-width:420px; margin:16px auto;">
+      <li>lawful expectations during a stop</li>
+      <li>how to communicate clearly</li>
+      <li>what behaviors can escalate a situation</li>
+      <li>how to respond safely and appropriately</li>
+    </ul>
     <button class="btn primary" data-screen="certificate">Complete Training</button>
   </div>
 
   <div id="screen-certificate" class="screen">
-    <h2>Step 3: Completion</h2>
-    <p>Driver receives confirmation via email or certificate ID.</p>
-    <button class="btn primary" data-screen="verify">Verify</button>
+    <h2>Step 3: Completion Confirmation</h2>
+    <p>
+      After completing the training, the participant receives proof of completion.
+    </p>
+    <p>
+      Confirmation may include:
+    </p>
+    <ul style="text-align:left; max-width:420px; margin:16px auto;">
+      <li>email or text confirmation</li>
+      <li>a certificate ID number</li>
+      <li>a verifiable completion record</li>
+    </ul>
+    <p>
+      This confirmation can be presented during a licensing or renewal process.
+    </p>
+    <button class="btn primary" data-screen="verify">View Verification</button>
   </div>
 
   <div id="screen-verify" class="screen">
     <h2>Step 4: Verification</h2>
-    <p>Simple system confirms completion — no DMV integration required.</p>
+    <p>
+      Completion can be confirmed through a simple verification process using a certificate ID or participant information.
+    </p>
+    <p>
+      No DMV integration is required, reducing implementation barriers while maintaining accountability.
+    </p>
     <button class="btn secondary" onclick="returnToOverview()">Return to Overview</button>
   </div>
 
 </div>
-
 <script>
   function showScreen(n) {
     document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
