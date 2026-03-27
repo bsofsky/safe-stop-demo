@@ -86,52 +86,62 @@ header{
 <div class="stage">
 
   <div id="screen-home" class="screen active">
-    <h2>Overview</h2>
-    <p>SAFE STOP is a short video-based education program designed to improve driver and law enforcement interactions.</p>
+    <h2>Program Overview</h2>
+    <p>
+      SAFE STOP is a scenario-based, real-world video training program designed to help drivers understand lawful behavior during traffic stops.
+    </p>
+    <p>
+      The program uses actual encounter scenarios narrated by experienced law enforcement to reduce confusion, improve compliance, and prevent escalation.
+    </p>
   </div>
 
   <div id="screen-identify" class="screen">
-    <h2>Step 1: Participant Info</h2>
-    <button class="btn primary" data-screen="course">Continue</button>
+    <h2>Step 1: Driver Identification</h2>
+    <p>Driver enters license or permit number (not verified).</p>
+    <p>This allows tracking of program completion without requiring DMV system access.</p>
+
+    <button class="btn primary" data-screen="course">Continue to Training</button>
   </div>
 
   <div id="screen-course" class="screen">
-    <h2>Step 2: Course Module</h2>
-    <button class="btn primary" data-screen="certificate">Complete Course</button>
+    <h2>Step 2: Video Training Modules</h2>
+    <p>Short, scenario-based real-world video modules.</p>
+
+    <ul style="text-align:left;">
+      <li>Traffic stop communication</li>
+      <li>What officers legally require</li>
+      <li>What behaviors escalate situations</li>
+      <li>How to safely respond</li>
+    </ul>
+
+    <p>Narrated by experienced law enforcement.</p>
+
+    <button class="btn primary" data-screen="certificate">Complete Training</button>
   </div>
 
   <div id="screen-certificate" class="screen">
-    <h2>Step 3: Certificate</h2>
-    <button class="btn primary" data-screen="verify">Verify</button>
+    <h2>Step 3: Completion Confirmation</h2>
+    <p>Driver receives proof of completion:</p>
+
+    <ul style="text-align:left;">
+      <li>Email or text confirmation</li>
+      <li>Certificate ID number</li>
+    </ul>
+
+    <p>Can be shown at DMV or used during online processes.</p>
+
+    <button class="btn primary" data-screen="verify">View Verification</button>
   </div>
 
   <div id="screen-verify" class="screen">
-    <h2>Step 4: Verification</h2>
+    <h2>Step 4: Verification System</h2>
+    <p>Simple verification system confirms completion status.</p>
+
+    <p>
+      No DMV integration required — reduces implementation barriers while maintaining accountability.
+    </p>
+
     <button class="btn secondary" onclick="returnToOverview()">Return to Overview</button>
   </div>
 
 </div>
-
-<script>
-const order = ["home","identify","course","certificate","verify"];
-
-function showScreen(n){
-  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
-
-  const target = document.getElementById('screen-' + n);
-  if(target) target.classList.add('active');
-}
-
-document.querySelectorAll('[data-screen]').forEach(b=>{
-  b.onclick = ()=>showScreen(b.dataset.screen);
-});
-
-function returnToOverview(){
-  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
-  document.getElementById('screen-home').classList.add('active');
-  window.scrollTo({ top:0, behavior:'smooth' });
-}
-</script>
-
-</body>
-</html>
