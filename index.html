@@ -798,16 +798,14 @@ This certificate may be presented digitally or in person at a DMV office, driver
     };
 
     function showScreen(n){
-      document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
-      document.getElementById('screen-'+n).classList.add('active');
-      document.getElementById('label').textContent=labels[n];
-      document.getElementById('progress').textContent=`Step ${order.indexOf(n)+1} of ${order.length}`;
-      const stage = document.querySelector('.stage');
-const y = stage.getBoundingClientRect().top + window.pageYOffset - 200;
-window.scrollTo({ top: y, behavior: 'smooth' });
-    }
+  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+  document.getElementById('screen-'+n).classList.add('active');
+  document.getElementById('label').textContent=labels[n];
+  document.getElementById('progress').textContent=`Step ${order.indexOf(n)+1} of ${order.length}`;
 
-    document.querySelectorAll('[data-screen]').forEach(b=>{
+  const stage = document.querySelector('.stage');
+  const y = stage.getBoundingClientRect().top + window.pageYOffset - 140;
+  window.scrollTo({ top: y, behavior: 'smooth' });
       b.onclick=()=>showScreen(b.dataset.screen);
     });
 
