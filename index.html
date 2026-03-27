@@ -1,1 +1,249 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SAFE STOP CALIFORNIA</title>
+  <style>
+    :root{--navy:#123b7a;--navy2:#1e4c8f;--gold:#f0c24b;--muted:#667085;--line:#d9e2ef;--bg:#f4f7fb;--card:#ffffff;--ok:#18794e}
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Arial,sans-serif;background:var(--bg);color:#1d2433}
+    header{position:sticky;top:0;background:rgba(255,255,255,.96);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);z-index:1000;text-align:center;padding:6px 0}
+    .logo{height:160px;width:auto;display:block;margin:0 auto}
+    .wrap{max-width:1100px;margin:0 auto;padding:0 16px 40px}
+    .hero{text-align:center;padding:22px 0 10px}
+    .eyebrow{display:inline-block;background:#edf4ff;border:1px solid #d6e4fb;color:var(--navy);font-size:12px;font-weight:700;border-radius:999px;padding:7px 10px;margin-bottom:12px}
+    h1{color:var(--navy);margin:4px 0 6px;font-size:30px}
+    .sub{color:var(--muted);font-size:15px;margin-bottom:14px}
+    .lead{max-width:860px;margin:0 auto;color:var(--muted);line-height:1.65;font-size:18px}
+    .topcards,.impactcards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:24px}
+    .card,.panel,.stage,.step{background:var(--card);border:1px solid var(--line);border-radius:20px;box-shadow:0 12px 30px rgba(18,59,122,.06)}
+    .card{padding:18px;text-align:left}
+    .card strong{display:block;color:var(--navy);margin-bottom:6px;font-size:18px}
+    .card span{color:var(--muted);line-height:1.5;font-size:14px}
+    .panel{margin-top:28px;padding:24px}
+    .panel h2,.panel h3,.screen h2{color:var(--navy)}
+    .grid2{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:16px}
+    .panel p,.panel li,.screen p,.screen li{color:var(--muted);line-height:1.6}
+    .steps{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin:26px 0 18px}
+    .step{padding:16px}
+    .num{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:var(--navy);color:#fff;font-weight:700;margin-bottom:10px}
+    .step strong{display:block;color:var(--navy);margin-bottom:6px}
+    .step span{color:var(--muted);font-size:14px;line-height:1.45}
+    .stage{overflow:hidden;margin-top:8px}
+    .stageTop{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;padding:14px 18px;background:#f8fbff;border-bottom:1px solid var(--line)}
+    .badge{border:1px solid var(--line);background:#fff;border-radius:999px;padding:8px 12px;color:var(--muted);font-size:13px;font-weight:700}
+    .screen{display:none;padding:28px;text-align:left}
+    .screen.active{display:block}
+    .screen h2{margin-top:0}
+    .two{display:grid;grid-template-columns:1.08fr .92fr;gap:18px;margin-top:18px}
+    .box{border:1px solid var(--line);border-radius:18px;padding:18px;background:#fff}
+    .video{background:linear-gradient(135deg,var(--navy),#264f8b);color:#fff;border-radius:22px;padding:24px;min-height:300px;display:flex;flex-direction:column;justify-content:space-between}
+    .videoTag{display:inline-block;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);padding:7px 10px;border-radius:999px;font-size:12px;font-weight:700;color:#fff4c6}
+    .play{width:88px;height:88px;border-radius:50%;display:grid;place-items:center;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);font-size:32px;margin:16px auto}
+    .answers{display:grid;gap:10px;margin-top:14px}
+    .ans{border:1px solid var(--line);border-radius:14px;padding:12px 14px}
+    .ans.ok{border-color:#b9dfc9;background:#f1fbf5;color:#1d2433}
+    .form{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px}
+    label{display:grid;gap:7px;font-size:14px;font-weight:700}
+    input,select{padding:12px 14px;border:1px solid #ccd7e6;border-radius:14px;font-size:15px}
+    .mutedbox{margin-top:14px;background:#f8fbff;border:1px solid #dde8fa;padding:12px 14px;border-radius:14px;color:#567196;font-size:14px;line-height:1.5}
+    .actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}
+    .btn{border:none;border-radius:999px;padding:12px 18px;font-weight:700;cursor:pointer}
+    .primary{background:linear-gradient(180deg,var(--navy),var(--navy2));color:#fff}
+    .secondary{background:#fff;border:1px solid var(--line);color:var(--navy)}
+    .certWrap{display:grid;grid-template-columns:1fr 220px;gap:18px;margin-top:18px}
+    .rows{border:1px dashed #c1cfdf;border-radius:16px;padding:8px 16px;background:#fcfdff}
+    .row{display:flex;justify-content:space-between;gap:12px;padding:13px 0;border-bottom:1px solid #eef2f8}
+    .row:last-child{border-bottom:none}
+    .row span{color:var(--muted)}
+    .valid{display:inline-block;background:#eaf7ef;border:1px solid #bee2cb;color:var(--ok);padding:9px 13px;border-radius:999px;font-size:13px;font-weight:700}
+    .qr{border:1px solid var(--line);border-radius:16px;padding:14px;text-align:center}
+    .qrbox{width:148px;height:148px;margin:auto;background:repeating-linear-gradient(0deg,#111 0 8px,#fff 8px 16px),repeating-linear-gradient(90deg,#111 0 8px,#fff 8px 16px);background-blend-mode:multiply;border:10px solid #fff}
+    .verify{display:grid;grid-template-columns:1fr auto;gap:12px;margin-top:16px}
+    .result{margin-top:16px;padding:20px;border:1px solid #cde8d8;border-radius:18px;background:linear-gradient(180deg,#f8fcf9,#fff)}
+    .foot{text-align:center;color:var(--muted);padding:28px 0 12px}
+    @media (max-width:900px){
+      .topcards,.impactcards,.grid2,.steps,.two,.certWrap,.form,.verify{grid-template-columns:1fr}
+      .logo{height:140px}
+      h1{font-size:28px}
+      .actions{flex-direction:column}
+      .btn{width:100%}
+    }
+  </style>
+</head>
+<body>
+  <header><img src="logo.png" class="logo" alt="SAFE STOP CALIFORNIA logo"></header>
+  <main class="wrap">
+    <section class="hero">
+      <div class="eyebrow">Driver Interaction Education Program</div>
+      <h1>SAFE STOP CALIFORNIA</h1>
+      <div class="sub">Scenario-based, real-world video training for safer traffic stop interactions</div>
+      <p class="lead">SAFE STOP CALIFORNIA is designed to educate drivers on lawful behavior during traffic stops, reduce unnecessary escalation, and improve safety outcomes for both the public and law enforcement.</p>
+      <div class="topcards">
+        <div class="card"><strong>5–10 Minute Video Training</strong><span>Short, scenario-based video modules designed to fit into licensing and renewal workflows.</span></div>
+        <div class="card"><strong>DMV-Compatible Verification</strong><span>Completion can be confirmed through a simple certificate or lookup process without system integration.</span></div>
+        <div class="card"><strong>No DMV Data Access Required</strong><span>All participant information is self-reported. No access to DMV databases or systems is required.</span></div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>For DMV & Public Safety Leadership</h2>
+      <p>SAFE STOP CALIFORNIA is a scalable, low-friction education program designed to improve driver behavior during traffic stops while minimizing implementation burden on state agencies.</p>
+      <div class="grid2">
+        <div><h3>Public Safety Impact</h3><ul><li>Reduces escalation during routine traffic stops</li><li>Improves driver understanding of lawful expectations</li><li>Supports officer safety and communication</li><li>Provides consistent statewide behavioral guidance</li></ul></div>
+        <div><h3>Cost & Efficiency Benefits</h3><ul><li>Reduces avoidable arrests and citations</li><li>Lowers court and administrative workload</li><li>Decreases tow, impound, and detention costs</li><li>Minimizes implementation overhead</li></ul></div>
+        <div><h3>Implementation Advantages</h3><ul><li>No DMV system integration required</li><li>No access to DMV data or databases</li><li>Works within existing licensing workflows</li><li>Supports rapid pilot deployment</li></ul></div>
+        <div><h3>Scalable Model</h3><ul><li>Applies to permits, new licenses, and renewals</li><li>Compatible with driver education providers</li><li>Centralized platform enables multi-state rollout</li><li>Expandable to national implementation</li></ul></div>
+      </div>
+    </section>
+
+    <section class="panel" style="background:#f8fbff;">
+      <h2>Impact & Cost Reduction Potential</h2>
+      <p>California processes millions of driver license transactions annually. Even a small reduction in escalation-related incidents can produce meaningful public safety benefits and measurable cost savings.</p>
+      <div class="impactcards">
+        <div class="card"><strong>Millions</strong><span>Annual permit, license, and renewal transactions</span></div>
+        <div class="card"><strong>1–2% Reduction</strong><span>Potential decrease in escalation-related incidents</span></div>
+        <div class="card"><strong>High Impact</strong><span>Reduced court, enforcement, and administrative costs</span></div>
+      </div>
+      <div style="margin-top:18px"><h3>Potential savings areas include:</h3><ul><li>Reduced arrests stemming from avoidable escalation</li><li>Lower court processing and enforcement costs</li><li>Fewer vehicle tow and impound incidents</li><li>Reduced financial impact on drivers and insurers</li></ul></div>
+    </section>
+
+    <section class="steps">
+      <div class="step"><div class="num">1</div><strong>Overview</strong><span>Introduce the program and its public safety purpose.</span></div>
+      <div class="step"><div class="num">2</div><strong>Participant Info</strong><span>Enter self-reported contact and license or permit information.</span></div>
+      <div class="step"><div class="num">3</div><strong>Video Training</strong><span>Complete short scenario-based modules.</span></div>
+      <div class="step"><div class="num">4</div><strong>Completion</strong><span>Issue a certificate ID and confirmation record.</span></div>
+      <div class="step"><div class="num">5</div><strong>Verification</strong><span>Confirm completion without DMV integration.</span></div>
+    </section>
+
+    <section class="stage">
+      <div class="stageTop">
+        <div class="badge" id="label">Program Overview</div>
+        <div class="badge" id="progress">Step 1 of 5</div>
+      </div>
+
+      <div id="screen-home" class="screen active">
+        <h2>Demo: Program Overview</h2>
+        <p>SAFE STOP is a scenario-based, real-world video training program designed to educate drivers on lawful behavior during traffic stops.</p>
+        <p>The program uses real encounter scenarios narrated by experienced law enforcement to reduce confusion, improve compliance, and prevent unnecessary escalation.</p>
+        <div class="actions"><button class="btn primary" data-screen="identify">View Program Demo</button></div>
+      </div>
+
+      <div id="screen-identify" class="screen">
+        <h2>Step 1: Participant Information</h2>
+        <p>The participant enters license or permit information to connect the training to the correct individual.</p>
+        <p>Information is self-reported only. No DMV verification or database access is required.</p>
+        <div class="box">
+          <div class="form">
+            <label>First name<input value="Bob"></label>
+            <label>Last name<input value="Smith"></label>
+            <label>License / permit number<input value="D1234567"></label>
+            <label>Email or mobile<input value="bob@example.com"></label>
+            <label>Applicant type<select><option>Learner’s Permit Applicant</option><option>First-Time Licensee</option><option selected>Renewal Applicant</option></select></label>
+            <label>Delivery channel<select><option selected>Online</option><option>DMV office</option><option>Driver education provider</option></select></label>
+          </div>
+          <div class="mutedbox">Information is self-reported and used only to associate training completion with the participant. No DMV database access is required.</div>
+        </div>
+        <div class="actions"><button class="btn secondary" data-screen="home">Back</button><button class="btn primary" data-screen="course">Continue to Training</button></div>
+      </div>
+
+      <div id="screen-course" class="screen">
+        <h2>Step 2: Video Training Modules</h2>
+        <p>Participants complete short, scenario-based video modules built around real-world traffic stop encounters.</p>
+        <div class="two">
+          <div class="video">
+            <div><div class="videoTag">Video module</div><h2 style="color:white;margin-top:12px;">Real-world encounters. Clear guidance. Safer outcomes.</h2><p style="color:#eef4ff;">Short, scenario-based video modules showing actual traffic stop interactions, with narration from experienced law enforcement.</p></div>
+            <div class="play">▶</div>
+            <div><div style="display:flex;justify-content:space-between;color:#eef4ff"><span>Course progress</span><span>67% complete</span></div><div style="margin-top:8px;width:100%;height:12px;background:rgba(255,255,255,.18);border-radius:999px;overflow:hidden"><div style="height:100%;width:67%;background:linear-gradient(90deg,#f0c24b,#ffe27f)"></div></div></div>
+          </div>
+          <div class="box">
+            <h3>Knowledge Check</h3>
+            <p>What is the most appropriate behavior during a routine traffic stop?</p>
+            <div class="answers">
+              <div class="ans">Argue immediately and leave the vehicle without instruction.</div>
+              <div class="ans ok">Stay calm, follow lawful instructions, and communicate clearly with the officer.</div>
+              <div class="ans">Refuse communication until the stop is over.</div>
+            </div>
+          </div>
+        </div>
+        <div class="actions"><button class="btn secondary" data-screen="identify">Back</button><button class="btn primary" data-screen="certificate">Complete Training</button></div>
+      </div>
+
+      <div id="screen-certificate" class="screen">
+        <h2>Step 3: Completion Confirmation</h2>
+        <p>Upon completion, the participant receives a verifiable SAFE STOP certificate confirming successful completion of the driver interaction training module.</p>
+        <p>This confirmation can be presented digitally or in person as part of a licensing or renewal process.</p>
+        <div class="valid">Valid completion record</div>
+        <div class="certWrap">
+          <div class="rows">
+            <div class="row"><span>Participant</span><strong>Bob Smith</strong></div>
+            <div class="row"><span>Applicant type</span><strong>Renewal Applicant</strong></div>
+            <div class="row"><span>License / permit</span><strong>D123***67</strong></div>
+            <div class="row"><span>Certificate ID</span><strong>SSC-2026-48291</strong></div>
+            <div class="row"><span>Completion date</span><strong>March 24, 2026</strong></div>
+            <div class="row"><span>Status</span><strong>Valid</strong></div>
+          </div>
+          <div class="qr"><div class="qrbox"></div><div class="sub" style="margin-top:12px;">Sample QR placeholder for digital verification</div></div>
+        </div>
+        <div class="actions"><button class="btn secondary" data-screen="course">Back</button><button class="btn primary" data-screen="verify">View Verification</button></div>
+      </div>
+
+      <div id="screen-verify" class="screen">
+        <h2>Step 4: Verification</h2>
+        <p>Authorized personnel can quickly verify course completion using a certificate ID or participant information. No DMV system integration or database access is required.</p>
+        <div class="box">
+          <div class="verify"><input value="SSC-2026-48291"><button class="btn primary" id="verifyBtn">Verify</button></div>
+          <div class="result" id="verifyResult">
+            <strong style="color:#18794e;">✔ Completion Verified</strong>
+            <div class="rows" style="margin-top:12px;">
+              <div class="row"><span>Participant</span><strong>Bob Smith</strong></div>
+              <div class="row"><span>License / permit</span><strong>D123***67</strong></div>
+              <div class="row"><span>Certificate ID</span><strong>SSC-2026-48291</strong></div>
+              <div class="row"><span>Completion date</span><strong>March 24, 2026</strong></div>
+              <div class="row"><span>Status</span><strong>Valid</strong></div>
+            </div>
+          </div>
+        </div>
+        <div class="actions"><button class="btn secondary" onclick="returnToOverview()">Return to Overview</button></div>
+      </div>
+    </section>
+
+    <div class="foot">SAFE STOP CALIFORNIA — interactive demo</div>
+  </main>
+
+  <script>
+    const order = ["home","identify","course","certificate","verify"];
+    const labels = {home:"Program Overview",identify:"Participant Information",course:"Video Training Modules",certificate:"Completion Confirmation",verify:"Verification"};
+    function showScreen(n) {
+      document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+      const target = document.getElementById('screen-' + n);
+      if (target) target.classList.add('active');
+      const label = document.getElementById('label');
+      const progress = document.getElementById('progress');
+      if (label) label.textContent = labels[n];
+      if (progress) progress.textContent = `Step ${order.indexOf(n) + 1} of ${order.length}`;
+    }
+    document.querySelectorAll('[data-screen]').forEach(b => { b.onclick = () => showScreen(b.dataset.screen); });
+    const verifyBtn = document.getElementById('verifyBtn');
+    if (verifyBtn) {
+      verifyBtn.onclick = () => {
+        const result = document.getElementById('verifyResult');
+        if (result) result.scrollIntoView({ behavior:'smooth', block:'nearest' });
+      };
+    }
+    function returnToOverview() {
+      document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+      const home = document.getElementById('screen-home');
+      if (home) home.classList.add('active');
+      const label = document.getElementById('label');
+      const progress = document.getElementById('progress');
+      if (label) label.textContent = 'Program Overview';
+      if (progress) progress.textContent = 'Step 1 of 5';
+      window.scrollTo({ top:0, behavior:'smooth' });
+    }
+  </script>
+</body>
+</html>
+
