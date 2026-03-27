@@ -803,32 +803,52 @@ This certificate may be presented digitally or in person at a DMV office, driver
   document.getElementById('label').textContent=labels[n];
   document.getElementById('progress').textContent=`Step ${order.indexOf(n)+1} of ${order.length}`;
 
-  const stage = document.querySelector('.stage');
-  const y = stage.getBoundingClientRect().top + window.pageYOffset - 140;
-  window.scrollTo({ top: y, behavior: 'smooth' });
-      b.onclick=()=>showScreen(b.dataset.screen);
-    });
+ <script>
+const order = ["home","identify","course","certificate","verify"];
+const labels = {
+  home: "Homepage",
+  identify: "Participant Info",
+  course: "Course Module",
+  certificate: "Completion Certificate",
+  verify: "Verification Portal"
+};
 
-    document.getElementById('verifyBtn').onclick=()=>{
-      document.getElementById('verifyResult').scrollIntoView({behavior:'smooth',block:'nearest'});
-    };
-  </script>
-  <script>
-function returnToOverview() {
-  // reset to first demo screen
+function showScreen(n) {
   document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
-  const homeScreen = document.getElementById('screen-home');
-  if (homeScreen) {
-    homeScreen.classList.add('active');
-  }
 
-  // update labels if they exist
+  const target = document.getElementById('screen-' + n);
+  if (target) target.classList.add('active');
+
+  const label = document.getElementById('label');
+  const progress = document.getElementById('progress');
+
+  if (label) label.textContent = labels[n];
+  if (progress) progress.textContent = `Step ${order.indexOf(n) + 1} of ${order.length}`;
+}
+
+document.querySelectorAll('[data-screen]').forEach(b => {
+  b.onclick = () => showScreen(b.dataset.screen);
+});
+
+const verifyBtn = document.getElementById('verifyBtn');
+if (verifyBtn) {
+  verifyBtn.onclick = () => {
+    const result = document.getElementById('verifyResult');
+    if (result) result.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  };
+}
+
+function returnToOverview() {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+
+  const homeScreen = document.getElementById('screen-home');
+  if (homeScreen) homeScreen.classList.add('active');
+
   const label = document.getElementById('label');
   const progress = document.getElementById('progress');
   if (label) label.textContent = 'Homepage';
   if (progress) progress.textContent = 'Step 1 of 5';
 
-  // scroll to top of page
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 </script>
