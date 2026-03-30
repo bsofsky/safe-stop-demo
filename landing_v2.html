@@ -1,403 +1,119 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SAFE STOP California</title>
-  <style>
-    :root{
-      --navy:#0d2c5a;
-      --navy2:#163f7a;
-      --gold:#d6ad52;
-      --white:#ffffff;
-      --off:#f4f6f8;
-      --text:#1f2a37;
-      --muted:#5b6574;
-      --line:#d8dee7;
-    }
-    *{box-sizing:border-box}
-    body{
-      margin:0;
-      font-family:Arial, Helvetica, sans-serif;
-      background:var(--off);
-      color:var(--text);
-    }
-    .topbar{
-      background:var(--navy);
-      color:var(--white);
-      border-bottom:4px solid var(--gold);
-    }
-    .topbar-inner{
-      max-width:1200px;
-      margin:0 auto;
-      padding:14px 20px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:20px;
-    }
-    .brand{
-      display:flex;
-      align-items:center;
-      gap:16px;
-    }
-    .brand img{
-      height:130px;
-      width:auto;
-      display:block;
-    }
-    .brand-text h1{
-      margin:0;
-      font-size:34px;
-      line-height:1;
-      letter-spacing:.5px;
-      color:var(--white);
-    }
-    .brand-text p{
-      margin:8px 0 0;
-      font-size:14px;
-      color:#d8e3f3;
-      letter-spacing:.8px;
-      text-transform:uppercase;
-    }
-    .top-actions{
-      display:flex;
-      gap:12px;
-      flex-wrap:wrap;
-      justify-content:flex-end;
-    }
-    .btn{
-      display:inline-block;
-      padding:14px 20px;
-      border-radius:10px;
-      text-decoration:none;
-      font-weight:700;
-      font-size:15px;
-      border:1px solid transparent;
-      text-align:center;
-    }
-    .btn-top{
-      background:#1a447f;
-      color:var(--white);
-      border-color:#7ea1d6;
-    }
-    .hero{
-      background:
-        linear-gradient(90deg, rgba(13,44,90,.96) 0%, rgba(13,44,90,.92) 38%, rgba(13,44,90,.58) 62%, rgba(13,44,90,.18) 78%, rgba(13,44,90,0) 100%),
-        url('hero.jpg') center right/cover no-repeat;
-      color:var(--white);
-    }
-    .hero-inner{
-      max-width:1200px;
-      margin:0 auto;
-      padding:72px 20px 66px;
-      min-height:520px;
-      display:flex;
-      align-items:center;
-    }
-    .hero-copy{
-      max-width:620px;
-    }
-    .eyebrow{
-      display:inline-block;
-      background:rgba(255,255,255,.12);
-      border:1px solid rgba(255,255,255,.25);
-      color:#f6e8bf;
-      border-radius:999px;
-      padding:7px 12px;
-      font-size:13px;
-      font-weight:700;
-      margin-bottom:18px;
-    }
-    .hero-copy h2{
-      margin:0 0 16px;
-      font-size:58px;
-      line-height:1.02;
-      letter-spacing:.2px;
-    }
-    .hero-copy h2 span{ color:var(--gold); }
-    .hero-copy .sub{
-      margin:0 0 14px;
-      font-size:28px;
-      line-height:1.25;
-    }
-    .hero-copy .desc{
-      margin:0 0 28px;
-      font-size:22px;
-      line-height:1.45;
-      color:#eef4ff;
-    }
-    .license-row{
-      display:flex;
-      gap:12px;
-      flex-wrap:wrap;
-      max-width:760px;
-    }
-    .license-row input{
-      flex:1 1 430px;
-      min-width:280px;
-      padding:17px 18px;
-      border-radius:10px;
-      border:none;
-      font-size:18px;
-      color:var(--text);
-    }
-    .btn-start{
-      background:var(--gold);
-      color:var(--navy);
-      min-width:210px;
-    }
-    .section{
-      max-width:1200px;
-      margin:0 auto;
-      padding:45px 20px;
-    }
-    .section-title{
-      text-align:center;
-      color:var(--navy);
-      font-size:34px;
-      margin:0 0 16px;
-    }
-    .section-copy{
-      text-align:center;
-      color:var(--text);
-      font-size:22px;
-      line-height:1.5;
-      max-width:980px;
-      margin:0 auto 34px;
-    }
-    .cards{
-      display:grid;
-      grid-template-columns:repeat(4,1fr);
-      gap:18px;
-    }
-    .card{
-      background:var(--white);
-      border:1px solid var(--line);
-      border-radius:16px;
-      padding:24px 18px;
-      text-align:center;
-      box-shadow:0 10px 30px rgba(13,44,90,.06);
-    }
-    .icon{
-      width:86px;
-      height:86px;
-      margin:0 auto 18px;
-      border-radius:18px;
-      background:var(--navy);
-      color:var(--gold);
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      font-size:38px;
-      font-weight:700;
-    }
-    .card h3{
-      margin:0 0 10px;
-      color:var(--navy);
-      font-size:21px;
-      line-height:1.2;
-    }
-    .card p{
-      margin:0;
-      color:var(--muted);
-      font-size:16px;
-      line-height:1.5;
-    }
-    .how{
-  background:var(--navy);
-  color:var(--white);
-  padding:12px 0 18px;
-  border-top:4px solid var(--gold);
-  border-bottom:4px solid var(--gold);
-    }
-.how .section{
-  max-width:1200px;
-  margin:0 auto;
-  padding:8px 20px 4px;
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SAFE STOP USA</title>
+
+<style>
+:root{
+  --navy:#123b7a;
+  --gold:#f0c24b;
+  --text:#1d2433;
+  --white:#ffffff;
 }
 
-  display:flex;
-  justify-content:space-between; /* evenly spread */
-  align-items:stretch; /* makes all same height */
+/* GLOBAL */
+body{
+  margin:0;
+  font-family:Arial, sans-serif;
+  background:#f4f7fb;
+}
 
-  gap:20px;
-    }
-.step{
-  background:var(--white);
-  color:var(--text);
-  border-radius:18px;
-  padding:18px 16px;
+/* HEADER */
+.header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:16px 24px;
+  background:white;
+}
+
+.logo img{
+  height:120px;
+}
+
+/* HERO */
+.hero{
+  background:linear-gradient(rgba(18,59,122,0.75), rgba(18,59,122,0.75)),
+  url('hero.jpg') center/cover no-repeat;
+  color:white;
   text-align:center;
+  padding:80px 20px;
+}
 
-  flex:1; /* ALL boxes same width */
+.hero h1{
+  font-size:36px;
+  margin-bottom:10px;
+}
 
+.hero p{
+  max-width:600px;
+  margin:0 auto;
+}
+
+/* HOW SECTION */
+.how{
+  background:var(--navy);
+  color:white;
+  padding:40px 0;
+}
+
+.section{
+  text-align:center;
+  margin-bottom:20px;
+}
+
+.steps{
+  max-width:1000px;
+  margin:0 auto;
   display:flex;
-  flex-direction:column;
-  justify-content:center;
+  justify-content:space-between;
+  gap:20px;
+  padding:0 20px;
+}
 
-  min-height:220px;
-    }
-    .num{
-      width:46px;
-      height:46px;
-      border-radius:50%;
-      background:var(--gold);
-      color:var(--navy);
-      font-weight:700;
-      font-size:20px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      margin:0 auto 16px;
-    }
-    .step h3{
-      margin:0 0 8px;
-      color:var(--navy);
-      font-size:21px;
-      line-height:1.2;
-    }
-    .step p{
-      margin:0;
-      color:var(--muted);
-      font-size:16px;
-      line-height:1.4;
-    }
-    .login-band{
-      background:var(--white);
-      border-top:1px solid var(--line);
-      border-bottom:1px solid var(--line);
-    }
-    .login-inner{
-      max-width:1200px;
-      margin:0 auto;
-      padding:20px 20px 10px;
-      display:grid;
-      grid-template-columns:1fr 2px 1fr;
-      align-items:center;
-      gap:20px;
-    }
-    .divider{
-      background:var(--gold);
-      height:100px;
-      width:2px;
-      justify-self:center;
-    }
-    .login-box{
-      text-align:center;
-      padding:8px 10px;
-    }
-    .login-box h3{
-      margin:0 0 12px;
-      font-size:28px;
-      color:var(--navy);
-    }
-    .login-box p{
-      margin:0 0 18px;
-      color:var(--muted);
-      font-size:18px;
-      line-height:1.5;
-    }
-    .login-box .btn{
-      background:var(--navy);
-      color:var(--white);
-      border:1px solid var(--gold);
-      min-width:260px;
-    }
-    footer{
-      text-align:center;
-      color:var(--muted);
-      padding:18px 20px 26px;
-      font-size:14px;
-    }
-    @media (max-width:1000px){
-      .cards{grid-template-columns:repeat(2,1fr)}
-      .steps{grid-template-columns:1fr}
-      .login-inner{grid-template-columns:1fr;gap:18px}
-      .divider{display:none}
-      .hero-copy h2{font-size:44px}
-      .hero-copy .sub{font-size:24px}
-      .hero-copy .desc{font-size:19px}
-      .brand-text h1{font-size:28px}
-    }
-    @media (max-width:700px){
-      .topbar-inner{flex-direction:column;align-items:flex-start}
-      .top-actions{width:100%;justify-content:stretch}
-      .top-actions .btn{flex:1 1 auto}
-      .brand img{height:110px}
-      .hero-inner{min-height:auto;padding:54px 20px}
-      .hero-copy h2{font-size:36px}
-      .cards{grid-template-columns:1fr}
-      .license-row input,.btn-start{width:100%}
-    }
-  </style>
+.step{
+  background:white;
+  color:var(--text);
+  border-radius:12px;
+  padding:20px;
+  flex:1;
+  text-align:center;
+}
+
+.num{
+  font-size:28px;
+  font-weight:bold;
+  margin-bottom:10px;
+}
+
+/* FOOTER */
+.footer{
+  text-align:center;
+  padding:20px;
+  background:#eee;
+}
+</style>
 </head>
+
 <body>
-  <header class="topbar">
-    <div class="topbar-inner">
-      <div class="brand">
-        <img src="logo_transparent_true.png" alt="SAFE STOP badge logo">
-        <div class="brand-text">
-          <h1>SAFE STOP</h1>
-          <p>Traffic Stop Education Program</p>
-        </div>
-      </div>
-      <div class="top-actions">
-        <a href="#" class="btn btn-top">Driver Login</a>
-        <a href="#" class="btn btn-top">DMV Verification Login</a>
-      </div>
-    </div>
-  </header>
 
-  <section class="hero">
-    <div class="hero-inner">
-      <div class="hero-copy">
-        <div class="eyebrow">California Driver Training Program</div>
-        <h2>KNOW WHAT TO DO<br> DURING A <span>TRAFFIC STOP.</span></h2>
-        <p class="sub">Real-world video training narrated by law enforcement.</p>
-        <p class="desc">Knowing how to safely conduct yourself can make every interaction smoother and safer.</p>
-        <div class="license-row">
-          <input type="text" placeholder="Enter License / Permit Number">
-          <a href="#" class="btn btn-start">Start Training</a>
-        </div>
-      </div>
-    </div>
-  </section>
+<div class="header">
+  <div class="logo">
+    <img src="logo_transparent_true.png">
+  </div>
+</div>
 
-  <section class="section">
-    <h2 class="section-title">WHY SAFE STOP TRAINING MATTERS</h2>
-    <p class="section-copy">
-      Traffic stops are a routine part of driving. Understanding what officers expect from drivers can help reduce confusion, improve compliance, and support safer outcomes for everyone involved.
-    </p>
+<div class="hero">
+  <h1>SAFE STOP USA</h1>
+  <p>Understanding how to safely conduct yourself during a traffic stop can make every interaction smoother and safer.</p>
+</div>
 
-    <div class="cards">
-      <div class="card">
-        <div class="icon">▶</div>
-        <h3>REAL TRAFFIC STOP SCENARIOS</h3>
-        <p>Learn from real-world examples that show how traffic stops unfold and what drivers should do.</p>
-      </div>
-      <div class="card">
-        <div class="icon">★</div>
-        <h3>LAW ENFORCEMENT NARRATION</h3>
-        <p>Hear directly from law enforcement on how drivers are expected to respond during a stop.</p>
-      </div>
-      <div class="card">
-        <div class="icon">⏱</div>
-        <h3>SHORT VIDEO MODULES</h3>
-        <p>Complete each video module in just 5–10 minutes.</p>
-      </div>
-      <div class="card">
-        <div class="icon">✓</div>
-        <h3>DMV-COMPATIBLE VERIFICATION</h3>
-        <p>Completion can be confirmed without requiring access to DMV systems.</p>
-      </div>
-    </div>
-  </section>
+<section class="how">
 
-  <section class="how">
   <div class="section">
-    <h2 class="section-title">HOW IT WORKS</h2>
+    <h2>HOW IT WORKS</h2>
   </div>
 
   <div class="steps">
@@ -405,26 +121,28 @@
     <div class="step">
       <div class="num">1</div>
       <h3>Enter License Number</h3>
-      <p>Enter your license or permit number to begin the training process.</p>
+      <p>Enter your license or permit number to begin.</p>
     </div>
 
     <div class="step">
       <div class="num">2</div>
-      <h3>Complete Video Training</h3>
-      <p>Watch real-world traffic stop scenarios with narration and practical guidance from law enforcement.</p>
+      <h3>Complete Video Modules</h3>
+      <p>Watch real-world traffic stop scenarios narrated by law enforcement.</p>
     </div>
 
     <div class="step">
       <div class="num">3</div>
-      <h3>Receive Completion Confirmation</h3>
-      <p>Receive confirmation that your training has been completed successfully.</p>
+      <h3>Receive Confirmation</h3>
+      <p>Receive confirmation of completed training.</p>
     </div>
 
   </div>
-  </section>
 
-  <footer>© 2026 Safe Stop USA. All rights reserved.</footer>
+</section>
+
+<div class="footer">
+  © 2026 SAFE STOP USA
+</div>
+
 </body>
 </html>
-landing_v2_replacement.html
-Displaying landing_v2_replacement.html.
