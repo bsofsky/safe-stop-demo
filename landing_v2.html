@@ -1,14 +1,13 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SAFE STOP California</title>
   <style>
     :root{
       --navy:#0d2c5a;
-      --navy-2:#123b7a;
+      --navy2:#163f7a;
       --gold:#d6ad52;
       --white:#ffffff;
       --off:#f4f6f8;
@@ -20,8 +19,8 @@
     body{
       margin:0;
       font-family:Arial, Helvetica, sans-serif;
-      color:var(--text);
       background:var(--off);
+      color:var(--text);
     }
     .topbar{
       background:var(--navy);
@@ -41,21 +40,18 @@
       display:flex;
       align-items:center;
       gap:16px;
-      min-width:0;
     }
     .brand img{
-      height:140px; !important;
-      width:auto; !important;
+      height:130px;
+      width:auto;
       display:block;
-    }
-    .brand-text{
-      min-width:0;
     }
     .brand-text h1{
       margin:0;
       font-size:34px;
       line-height:1;
       letter-spacing:.5px;
+      color:var(--white);
     }
     .brand-text p{
       margin:8px 0 0;
@@ -80,17 +76,16 @@
       border:1px solid transparent;
       text-align:center;
     }
-    .btn-light{
+    .btn-top{
       background:#1a447f;
       color:var(--white);
       border-color:#7ea1d6;
     }
     .hero{
-.hero{
-  background:
-    linear-gradient(90deg, rgba(13,44,90,.96) 0%, rgba(13,44,90,.92) 38%, rgba(13,44,90,.58) 62%, rgba(13,44,90,.18) 78%, rgba(13,44,90,0) 100%),
-    url('hero.jpeg') center right/cover no-repeat;
-  color: var(--white);
+      background:
+        linear-gradient(90deg, rgba(13,44,90,.96) 0%, rgba(13,44,90,.92) 38%, rgba(13,44,90,.58) 62%, rgba(13,44,90,.18) 78%, rgba(13,44,90,0) 100%),
+        url('hero.jpg') center right/cover no-repeat;
+      color:var(--white);
     }
     .hero-inner{
       max-width:1200px;
@@ -147,7 +142,7 @@
       font-size:18px;
       color:var(--text);
     }
-    .license-row .btn-start{
+    .btn-start{
       background:var(--gold);
       color:var(--navy);
       min-width:210px;
@@ -212,13 +207,13 @@
     .how{
       background:var(--navy);
       color:var(--white);
-      padding:58px 0;
+      padding:40px 0 50px;
       border-top:4px solid var(--gold);
       border-bottom:4px solid var(--gold);
     }
     .how .section-title{ color:var(--white); }
     .steps{
-      max-width:1200px;
+      max-width:1000px;
       margin:0 auto;
       padding:0 20px;
       display:grid;
@@ -229,35 +224,33 @@
       background:var(--white);
       color:var(--text);
       border-radius:18px;
-      padding:28px 22px 24px;
+      padding:20px 18px 18px;
       text-align:center;
-      position:relative;
-      min-height:240px;
     }
-    .step .num{
-      width:52px;
-      height:52px;
+    .num{
+      width:46px;
+      height:46px;
       border-radius:50%;
       background:var(--gold);
       color:var(--navy);
       font-weight:700;
-      font-size:24px;
+      font-size:20px;
       display:flex;
       align-items:center;
       justify-content:center;
-      margin:0 auto 18px;
+      margin:0 auto 16px;
     }
     .step h3{
-      margin:0 0 12px;
+      margin:0 0 8px;
       color:var(--navy);
-      font-size:23px;
+      font-size:21px;
       line-height:1.2;
     }
     .step p{
       margin:0;
       color:var(--muted);
-      font-size:17px;
-      line-height:1.5;
+      font-size:16px;
+      line-height:1.4;
     }
     .login-band{
       background:var(--white);
@@ -269,12 +262,12 @@
       margin:0 auto;
       padding:20px 20px 10px;
       display:grid;
-      grid-template-columns:1fr 1px 1fr;
+      grid-template-columns:1fr 2px 1fr;
       align-items:center;
       gap:20px;
     }
     .divider{
-      background: var(--gold);
+      background:var(--gold);
       height:100px;
       width:2px;
       justify-self:center;
@@ -297,7 +290,7 @@
     .login-box .btn{
       background:var(--navy);
       color:var(--white);
-      border-color: 1px solid var(--gold);
+      border:1px solid var(--gold);
       min-width:260px;
     }
     footer{
@@ -306,36 +299,25 @@
       padding:18px 20px 26px;
       font-size:14px;
     }
-    @media (max-width: 1000px){
-      .cards{ grid-template-columns:repeat(2,1fr); }
-      .steps{ grid-template-columns:1fr; }
-      .login-inner{ grid-template-columns:1fr; gap:18px; }
-      .divider{ display:none; }
-      .hero-copy h2{ font-size:44px; }
-      .hero-copy .sub{ font-size:24px; }
-      .hero-copy .desc{ font-size:19px; }
-      .brand-text h1{ font-size:28px; }
+    @media (max-width:1000px){
+      .cards{grid-template-columns:repeat(2,1fr)}
+      .steps{grid-template-columns:1fr}
+      .login-inner{grid-template-columns:1fr;gap:18px}
+      .divider{display:none}
+      .hero-copy h2{font-size:44px}
+      .hero-copy .sub{font-size:24px}
+      .hero-copy .desc{font-size:19px}
+      .brand-text h1{font-size:28px}
     }
-    @media (max-width: 700px){
-      .topbar-inner{
-        flex-direction:column;
-        align-items:flex-start;
-      }
-      .top-actions{
-        width:100%;
-        justify-content:stretch;
-      }
-      .top-actions .btn{
-        flex:1 1 auto;
-      }
-      .brand img{ height:72px; }
-      .hero-inner{ min-height:auto; padding:54px 20px; }
-      .hero-copy h2{ font-size:36px; }
-      .cards{ grid-template-columns:1fr; }
-      .license-row .btn-start,
-      .license-row input{
-        width:100%;
-      }
+    @media (max-width:700px){
+      .topbar-inner{flex-direction:column;align-items:flex-start}
+      .top-actions{width:100%;justify-content:stretch}
+      .top-actions .btn{flex:1 1 auto}
+      .brand img{height:110px}
+      .hero-inner{min-height:auto;padding:54px 20px}
+      .hero-copy h2{font-size:36px}
+      .cards{grid-template-columns:1fr}
+      .license-row input,.btn-start{width:100%}
     }
   </style>
 </head>
@@ -350,8 +332,8 @@
         </div>
       </div>
       <div class="top-actions">
-        <a href="#" class="btn btn-light">Driver Login</a>
-        <a href="#" class="btn btn-light">DMV Verification Login</a>
+        <a href="#" class="btn btn-top">Driver Login</a>
+        <a href="#" class="btn btn-top">DMV Verification Login</a>
       </div>
     </div>
   </header>
@@ -383,19 +365,16 @@
         <h3>REAL TRAFFIC STOP SCENARIOS</h3>
         <p>Learn from real-world examples that show how traffic stops unfold and what drivers should do.</p>
       </div>
-
       <div class="card">
         <div class="icon">★</div>
         <h3>LAW ENFORCEMENT NARRATION</h3>
         <p>Hear directly from law enforcement on how drivers are expected to respond during a stop.</p>
       </div>
-
       <div class="card">
         <div class="icon">⏱</div>
         <h3>SHORT VIDEO MODULES</h3>
         <p>Complete each video module in just 5–10 minutes.</p>
       </div>
-
       <div class="card">
         <div class="icon">✓</div>
         <h3>DMV-COMPATIBLE VERIFICATION</h3>
@@ -414,13 +393,11 @@
         <h3>Enter License Number</h3>
         <p>Enter your license or permit number to begin the training process.</p>
       </div>
-
       <div class="step">
         <div class="num">2</div>
         <h3>Complete Video Training</h3>
         <p>Watch real-world traffic stop scenarios with narration and practical guidance from law enforcement.</p>
       </div>
-
       <div class="step">
         <div class="num">3</div>
         <h3>Receive Completion Confirmation</h3>
@@ -428,21 +405,23 @@
       </div>
     </div>
   </section>
- <div style="display:flex; justify-content:center; align-items:center; gap:0; margin-top:30px;">
-  <button class="btn primary" style="border-radius:30px 0 0 30px; padding:16px 28px;">
-    Driver Login
-  </button>
-  <div style="width:1px; height:42px; background:#ffffff55;"></div>
-  <button class="btn primary" style="border-radius:0 30px 30px 0; padding:16px 28px;">
-    DMV Verification Login
-  </button>
-</div>
+
+  <section class="login-band">
+    <div class="login-inner">
+      <div class="login-box">
+        <h3>Driver Login</h3>
+        <p>Access your training, resume a module, or review your completion status.</p>
+        <a href="#" class="btn">Driver Login</a>
+      </div>
+      <div class="divider"></div>
+      <div class="login-box">
+        <h3>DMV Verification Login</h3>
+        <p>Access training completion records and verification for authorized review.</p>
+        <a href="#" class="btn">DMV Verification Login</a>
+      </div>
     </div>
   </section>
 
-  <footer>
-    © 2026 Safe Stop USA. All rights reserved.
-  </footer>
+  <footer>© 2026 Safe Stop USA. All rights reserved.</footer>
 </body>
 </html>
-
