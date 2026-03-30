@@ -1,1 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Safe Stop Demo</title>
 
+<style>
+body { margin:0; font-family:Arial; background:#f4f6f8; }
+
+.header {
+  background:#0d2c5a;
+  color:white;
+  padding:20px;
+  display:flex;
+  align-items:center;
+  gap:15px;
+}
+
+.header img { height:80px; }
+
+.screen { display:none; padding:60px 20px; text-align:center; }
+.screen.active { display:block; }
+
+.hero {
+  background:linear-gradient(to right, rgba(13,44,90,.9), rgba(13,44,90,.4));
+  color:white;
+  padding:100px 20px;
+}
+
+button {
+  padding:12px 20px;
+  margin:10px;
+  background:#d6ad52;
+  border:none;
+  border-radius:6px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+input {
+  padding:12px;
+  width:260px;
+  margin:10px;
+}
+
+.card {
+  background:white;
+  padding:20px;
+  margin:10px auto;
+  width:260px;
+  border-radius:10px;
+}
+
+.footer {
+  text-align:center;
+  padding:20px;
+  color:#666;
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">
+  <img src="logo_transparent_true.png">
+  <h2>SAFE STOP DEMO</h2>
+</div>
+
+<!-- HOME -->
+<div id="home" class="screen active hero">
+  <h1>Safe Stop Training System</h1>
+  <p>Interactive demonstration of driver training and verification</p>
+
+  <button onclick="show('login')">Driver Login</button>
+  <button onclick="show('verify')">DMV Verification</button>
+</div>
+
+<!-- LOGIN -->
+<div id="login" class="screen">
+  <h2>Driver Login</h2>
+  <p>Enter License or Permit Number</p>
+  <input placeholder="License Number"><br>
+  <button onclick="show('training')">Continue</button>
+</div>
+
+<!-- TRAINING -->
+<div id="training" class="screen">
+  <h2>Training Modules</h2>
+
+  <div class="card">Module 1: Traffic Stop Basics</div>
+  <div class="card">Module 2: Driver Responsibilities</div>
+  <div class="card">Module 3: Avoid Escalation</div>
+
+  <button onclick="show('complete')">Complete Training</button>
+</div>
+
+<!-- COMPLETE -->
+<div id="complete" class="screen">
+  <h2>Training Complete</h2>
+  <p><strong>Certificate ID: SS-28493</strong></p>
+
+  <button onclick="show('verify')">Verify Completion</button>
+</div>
+
+<!-- VERIFY -->
+<div id="verify" class="screen">
+  <h2>DMV Verification</h2>
+  <input placeholder="Enter Certificate ID"><br>
+  <button onclick="verify()">Verify</button>
+
+  <p id="result" style="margin-top:20px;font-weight:bold;"></p>
+</div>
+
+<div class="footer">
+© 2026 SAFE STOP DEMO
+</div>
+
+<script>
+function show(id){
+  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  window.scrollTo(0,0);
+}
+
+function verify(){
+  document.getElementById('result').innerHTML = "✔ Verified - Completed";
+}
+</script>
+
+</body>
+</html>
