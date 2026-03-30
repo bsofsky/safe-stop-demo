@@ -130,6 +130,18 @@ function verify(){
 document.getElementById('result').innerHTML = "✔ Verified - Completed";
 }
 </script>
+<script>
+function showScreen(id){
+  document.querySelectorAll('.screen').forEach(s=>{
+    s.style.display='none';
+  });
+  document.getElementById(id).style.display='block';
+  window.scrollTo(0,0);
+}
 
+function verifyCompletion(){
+  alert("Verification Confirmed");
+}
+</script>
 </body>
 </html>
