@@ -231,21 +231,31 @@ Sent from my iPhone
   border-bottom:4px solid var(--gold);
     }
     .how .section-title{ color:var(--white); }
-    .steps{
-        max-width:900px;
-        margin:0 auto;
-        padding:10px 20px 0;
-        display:flex;
-        justify-content:center;
-        align-items:center;
-        gap:22px;
+.steps{
+  max-width:900px;
+  margin:0 auto;
+  padding:10px 20px 0;
+
+  display:flex;
+  justify-content:space-between; /* evenly spread */
+  align-items:stretch; /* makes all same height */
+
+  gap:20px;
     }
-    .step{
-      background:var(--white);
-      color:var(--text);
-      border-radius:18px;
-      padding:20px 18px 18px;
-      text-align:center;
+.step{
+  background:var(--white);
+  color:var(--text);
+  border-radius:18px;
+  padding:18px 16px;
+  text-align:center;
+
+  flex:1; /* ALL boxes same width */
+
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+
+  min-height:220px;
     }
     .num{
       width:46px;
