@@ -3,59 +3,79 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Safe Stop Demo</title>
+<title>Safe Stop USA</title>
 
 <style>
-body { margin:0; font-family:Arial; background:#f4f6f8; }
+body{
+  margin:0;
+  font-family:Arial, sans-serif;
+  background:#f4f7fb;
+}
 
-.header {
-  background:#0d2c5a;
-  color:white;
+.header{
+  background:#123b7a;
+  padding:15px;
+  text-align:center;
+}
+
+.header img{
+  height:120px;
+}
+
+.container{
+  max-width:900px;
+  margin:40px auto;
   padding:20px;
-  display:flex;
-  align-items:center;
-  gap:15px;
 }
 
-.header img { height:80px; }
-
-.screen { display:none; padding:60px 20px; text-align:center; }
-.screen.active { display:block; }
-
-.hero {
-  background:linear-gradient(to right, rgba(13,44,90,.9), rgba(13,44,90,.4));
-  color:white;
-  padding:100px 20px;
+.screen{
+  display:none;
+  text-align:center;
 }
 
-button {
+.screen.active{
+  display:block;
+}
+
+h1{
+  color:#123b7a;
+}
+
+.card{
+  background:white;
+  padding:20px;
+  margin:15px auto;
+  border-radius:12px;
+  max-width:600px;
+  box-shadow:0 4px 12px rgba(0,0,0,0.1);
+}
+
+input{
+  padding:10px;
+  width:80%;
+  margin:10px 0;
+  border-radius:8px;
+  border:1px solid #ccc;
+}
+
+button{
   padding:12px 20px;
-  margin:10px;
-  background:#d6ad52;
   border:none;
-  border-radius:6px;
+  border-radius:25px;
+  background:#123b7a;
+  color:white;
   font-weight:bold;
   cursor:pointer;
 }
 
-input {
-  padding:12px;
-  width:260px;
-  margin:10px;
+button:hover{
+  background:#0e2f63;
 }
 
-.card {
-  background:white;
-  padding:20px;
-  margin:10px auto;
-  width:260px;
-  border-radius:10px;
-}
-
-.footer {
-  text-align:center;
-  padding:20px;
-  color:#666;
+.verify{
+  color:green;
+  font-size:22px;
+  font-weight:bold;
 }
 </style>
 </head>
@@ -63,68 +83,70 @@ input {
 <body>
 
 <div class="header">
-  <img src="logo_transparent_true.png">
-  <h2>SAFE STOP DEMO</h2>
+  <img src="logo_clean.png">
 </div>
 
-<!-- HOME -->
-<div id="home" class="screen active hero">
-  <h1>Safe Stop Training System</h1>
-  <p>Interactive demonstration of driver training and verification</p>
-
-  <button onclick="show('login')">Driver Login</button>
-  <button onclick="show('verify')">DMV Verification</button>
-</div>
+<div class="container">
 
 <!-- LOGIN -->
-<div id="login" class="screen">
-  <h2>Driver Login</h2>
-  <p>Enter License or Permit Number</p>
-  <input placeholder="License Number"><br>
-  <button onclick="show('training')">Continue</button>
+<div id="login" class="screen active">
+  <h1>Driver Login</h1>
+  <div class="card">
+    <p>Enter your Driver License or Permit Number</p>
+    <input placeholder="License / Permit Number">
+    <br>
+    <button onclick="next('training')">Continue</button>
+  </div>
 </div>
 
 <!-- TRAINING -->
 <div id="training" class="screen">
-  <h2>Training Modules</h2>
+  <h1>Training Modules</h1>
 
   <div class="card">Module 1: Traffic Stop Basics</div>
   <div class="card">Module 2: Driver Responsibilities</div>
   <div class="card">Module 3: Avoid Escalation</div>
 
-  <button onclick="show('complete')">Complete Training</button>
+  <button onclick="next('complete')">Complete Training</button>
 </div>
 
 <!-- COMPLETE -->
 <div id="complete" class="screen">
-  <h2>Training Complete</h2>
-  <p><strong>Certificate ID: SS-28493</strong></p>
+  <h1>Training Complete</h1>
 
-  <button onclick="show('verify')">Verify Completion</button>
+  <div class="card">
+    <p>Your Certificate ID:</p>
+    <h2>SS-48293</h2>
+  </div>
+
+  <button onclick="next('verify')">Verify Completion</button>
 </div>
 
 <!-- VERIFY -->
 <div id="verify" class="screen">
-  <h2>DMV Verification</h2>
-  <input placeholder="Enter Certificate ID"><br>
-  <button onclick="verify()">Verify</button>
+  <h1>DMV Verification</h1>
 
-  <p id="result" style="margin-top:20px;font-weight:bold;"></p>
+  <div class="card">
+    <p>Enter Certificate ID</p>
+    <input placeholder="SS-XXXXX">
+    <br>
+    <button onclick="verify()">Verify</button>
+
+    <p id="result" class="verify"></p>
+  </div>
 </div>
 
-<div class="footer">
-© 2026 SAFE STOP DEMO
 </div>
 
 <script>
-function show(id){
-  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
-  document.getElementById(id).classList.add('active');
-  window.scrollTo(0,0);
+function next(screen){
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById(screen).classList.add('active');
+  window.scrollTo({top:0});
 }
 
 function verify(){
-  document.getElementById('result').innerHTML = "✔ Verified - Completed";
+  document.getElementById('result').innerHTML = "✔ Verified – Completed";
 }
 </script>
 
