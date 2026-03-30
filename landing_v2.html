@@ -3,97 +3,131 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SAFE STOP USA</title>
+<title>SAFE STOP</title>
 
 <style>
 body{margin:0;font-family:Arial;background:#f4f6f8}
 .topbar{background:#0d2c5a;color:#fff;padding:15px 20px;display:flex;justify-content:space-between;align-items:center}
 .brand{display:flex;align-items:center;gap:15px}
-.brand img{height:140px}
-h1{margin:0;font-size:32px}
-.screen{display:none;padding:40px;text-align:center}
-.screen.active{display:block}
-.hero{background:#0d2c5a;color:#fff;padding:100px 20px}
-.hero h2{font-size:48px;margin-bottom:20px}
-.btn{padding:15px 25px;border:none;border-radius:8px;font-weight:bold;cursor:pointer;margin:10px}
+.brand img{height:120px}
+.brand h1{margin:0}
+.btn{padding:14px 22px;border-radius:8px;border:none;font-weight:bold;cursor:pointer}
 .primary{background:#d6ad52;color:#0d2c5a}
 .secondary{background:#0d2c5a;color:#fff;border:1px solid #d6ad52}
-input{padding:15px;width:300px;margin:10px;border-radius:6px;border:1px solid #ccc}
-.card{background:#fff;padding:20px;margin:15px auto;max-width:600px;border-radius:10px}
-.footer{text-align:center;padding:20px;font-size:12px;color:#666}
+.screen{display:none}
+.screen.active{display:block}
+
+/* HERO */
+.hero{
+background:linear-gradient(to right, rgba(13,44,90,.95), rgba(13,44,90,.6)), url('hero.jpg');
+background-size:cover;
+color:#fff;
+padding:100px 20px;
+text-align:center;
+}
+.hero h2{font-size:48px;margin-bottom:20px}
+.hero p{font-size:20px;margin-bottom:30px}
+
+/* SECTION */
+.section{text-align:center;padding:60px 20px}
+.cards{display:flex;justify-content:center;gap:20px;flex-wrap:wrap}
+.card{background:#fff;padding:20px;border-radius:10px;width:220px}
+
+/* HOW */
+.how{background:#0d2c5a;color:#fff;padding:50px 20px}
+.steps{display:flex;justify-content:center;gap:20px}
+.step{background:#fff;color:#000;padding:20px;border-radius:10px;width:220px}
+
+/* LOGIN */
+.login{background:#fff;padding:40px;text-align:center}
+.footer{text-align:center;padding:20px;color:#666}
 </style>
 </head>
 
 <body>
 
 <div class="topbar">
-  <div class="brand">
-    <img src="logo_transparent_true.png">
-    <h1>SAFE STOP USA</h1>
-  </div>
+<div class="brand">
+<img src="logo_transparent_true.png">
+<h1>SAFE STOP</h1>
+</div>
 </div>
 
-<!-- LANDING -->
-<div id="screen-home" class="screen active hero">
-  <h2>Conduct Yourself Safely During Traffic Stops</h2>
-  <p>Scenario-based real-world video training to reduce escalation and improve outcomes.</p>
-  <button class="btn primary" onclick="showScreen('screen-login')">Driver Login</button>
-  <button class="btn secondary" onclick="showScreen('screen-verify')">DMV Verification</button>
+<!-- HOME -->
+<div id="home" class="screen active">
+
+<div class="hero">
+<h2>KNOW WHAT TO DO DURING A TRAFFIC STOP</h2>
+<p>Real-world video training narrated by law enforcement</p>
+
+<button class="btn primary" onclick="show('login')">Driver Login</button>
+<button class="btn secondary" onclick="show('verify')">DMV Verification</button>
+</div>
+
+<div class="section">
+<h2>WHY SAFE STOP TRAINING MATTERS</h2>
+
+<div class="cards">
+<div class="card">Real Traffic Stop Scenarios</div>
+<div class="card">Law Enforcement Narration</div>
+<div class="card">Complete Each Video Module</div>
+<div class="card">Improve Safety & Reduce Risk</div>
+</div>
+</div>
+
+<div class="how">
+<h2>HOW IT WORKS</h2>
+<div class="steps">
+<div class="step">1. Enter License</div>
+<div class="step">2. Complete Training</div>
+<div class="step">3. Get Confirmation</div>
+</div>
+</div>
+
 </div>
 
 <!-- LOGIN -->
-<div id="screen-login" class="screen">
-  <h2>Driver Login</h2>
-  <p>Enter your license or permit number</p>
-  <input placeholder="License / Permit Number">
-  <br>
-  <button class="btn primary" onclick="showScreen('screen-training')">Continue</button>
+<div id="login" class="screen section">
+<h2>Driver Login</h2>
+<input placeholder="License Number"><br><br>
+<button class="btn primary" onclick="show('training')">Continue</button>
 </div>
 
 <!-- TRAINING -->
-<div id="screen-training" class="screen">
-  <h2>Training Modules</h2>
-
-  <div class="card">Module 1: Introduction to Traffic Stops</div>
-  <div class="card">Module 2: Driver Responsibilities</div>
-  <div class="card">Module 3: Avoiding Escalation</div>
-
-  <button class="btn primary" onclick="showScreen('screen-complete')">Complete Training</button>
+<div id="training" class="screen section">
+<h2>Training Modules</h2>
+<div class="card">Module 1</div>
+<div class="card">Module 2</div>
+<div class="card">Module 3</div><br>
+<button class="btn primary" onclick="show('complete')">Complete Training</button>
 </div>
 
 <!-- COMPLETE -->
-<div id="screen-complete" class="screen">
-  <h2>Training Complete</h2>
-  <p>Your completion has been recorded.</p>
-  <p><strong>Certificate ID: SS-48291</strong></p>
-
-  <button class="btn primary" onclick="showScreen('screen-verify')">Verify Completion</button>
+<div id="complete" class="screen section">
+<h2>Training Complete</h2>
+<p>Certificate ID: SS-10293</p>
+<button class="btn primary" onclick="show('verify')">Verify</button>
 </div>
 
 <!-- VERIFY -->
-<div id="screen-verify" class="screen">
-  <h2>DMV Verification</h2>
-  <p>Enter license or certificate ID</p>
-
-  <input placeholder="Enter ID">
-  <br>
-
-  <button class="btn primary" onclick="verify()">Verify</button>
-
-  <div id="result" style="margin-top:20px;font-weight:bold;"></div>
+<div id="verify" class="screen section">
+<h2>DMV Verification</h2>
+<input placeholder="Enter ID"><br><br>
+<button class="btn primary" onclick="verify()">Verify</button>
+<p id="result"></p>
 </div>
 
-<div class="footer">© 2026 Safe Stop USA</div>
+<div class="footer">© 2026 SAFE STOP</div>
 
 <script>
-function showScreen(id){
-  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
-  document.getElementById(id).classList.add('active');
-  window.scrollTo({top:0,behavior:'smooth'});
+function show(id){
+document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+document.getElementById(id).classList.add('active');
+window.scrollTo(0,0);
 }
 
 function verify(){
-  document.getElementById('result').innerHTML = "✔ Verified - Completed";
+document.getElementById('result').innerHTML = "✔ Verified - Completed";
 }
 </script>
 
